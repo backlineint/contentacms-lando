@@ -1,4 +1,4 @@
-name: drupal8phpunit
+name: contentacms
 # https://docs.devwithlando.io/tutorials/drupal8.html
 recipe: drupal8
 
@@ -6,7 +6,7 @@ recipe: drupal8
 # https://docs.devwithlando.io/recipes/drupal8.html
 config:
   # Set the webroot dir.
-  webroot: web
+  webroot: contentacms/web
   # Enable xdebug autostart for CLI debugging.
   xdebug: true
 
@@ -35,8 +35,8 @@ tooling:
   phpunit:
     service: appserver
     description: "Run PHP Unit tests: lando phpunit"
-    cmd: "/app/web/vendor/bin/phpunit --debug --configuration /app/web/core/phpunit.xml --printer=\\Drupal\\Tests\\Listeners\\HtmlOutputPrinter"
+    cmd: "/app/contentacms/vendor/bin/phpunit --debug --configuration /app/contentacms/core/phpunit.xml --printer=\\Drupal\\Tests\\Listeners\\HtmlOutputPrinter"
   drush:
-    cmd: "/app/web/vendor/bin/drush --root=/app/web"
+    cmd: "/app/contentacms/vendor/bin/drush --root=/app/contentacms/web"
   drupal:
-    cmd: "/app/web/vendor/bin/drupal --root=/app/web"
+    cmd: "/app/contentacms/vendor/bin/drupal --root=/app/contentacms/web"
