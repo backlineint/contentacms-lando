@@ -27,12 +27,13 @@ fi
 
 # Create file dall-irs.
 echo "Creating dirs and symlinks."
-cd $LANDO_MOUNT/contentacms/web/
-mkdir -p -m 777 sites/default/files/phpunit
-mkdir -p -m 777 sites/simpletest
-mkdir -p -m 777 ../files/private
-mkdir -p -m 777 ../files/tmp
-mkdir -p -m 777 ../files/sync
+cd $LANDO_MOUNT/contentacms
+mkdir -p -m 777 web/sites/default/files
+mkdir -p -m 777 web/sites/default/files/phpunit
+mkdir -p -m 777 web/sites/simpletest
+mkdir -p -m 777 files/private
+mkdir -p -m 777 files/tmp
+mkdir -p -m 777 files/sync
 rm $LANDO_MOUNT/contentacms/web/sites/default/settings.php
 
 # Symlink the settings and public file dir.
@@ -40,10 +41,10 @@ if [ ! -e "$LANDO_MOUNT/contentacms/web/sites/default/settings.php" ]; then
     ln -s $LANDO_MOUNT/config/sites.default.settings.php $LANDO_MOUNT/contentacms/web/sites/default/settings.php
 fi
 if [ ! -L "$LANDO_MOUNT/files/public" ]; then
-    ln -s $LANDO_APP_ROOT_BIND/contentacms/web/sites/default/files $LANDO_MOUNT/files/public
+    ln -s $LANDO_APP_ROOT_BIND/contentacms/web/sites/default/files $LANDO_MOUNT/contentacms/files/public
 fi
 if [ ! -L "$LANDO_MOUNT/files/simpletest" ]; then
-    ln -s $LANDO_APP_ROOT_BIND/contentacms/web/sites/simpletest $LANDO_MOUNT/files/simpletest
+    ln -s $LANDO_APP_ROOT_BIND/contentacms/web/sites/simpletest $LANDO_MOUNT/contentacms/files/simpletest
 fi
 
 if [ $FIRST_RUN ]; then
@@ -51,6 +52,7 @@ if [ $FIRST_RUN ]; then
     cd $LANDO_MOUNT/contentacms
     #cp .env.example .env
     cp $LANDO_MOUNT/config/.env.local $LANDO_MOUNT/contentacms/.env.local
+    cp -Rv $LANDO_MOUNT/contentacms/web/profiles/contrib/contenta_jsonapi/config/sync/* $LANDO_MOUNT/contentacms/files/sync
     composer run-script install:with-mysql
 fi
 

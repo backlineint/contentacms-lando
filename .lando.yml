@@ -35,7 +35,7 @@ tooling:
   phpunit:
     service: appserver
     description: "Run PHP Unit tests: lando phpunit"
-    cmd: "/app/contentacms/vendor/bin/phpunit --debug --configuration /app/contentacms/core/phpunit.xml --printer=\\Drupal\\Tests\\Listeners\\HtmlOutputPrinter"
+    cmd: "/app/contentacms/vendor/bin/phpunit --debug --configuration /app/contentacms/web/core/phpunit.xml --printer=\\Drupal\\Tests\\Listeners\\HtmlOutputPrinter"
   drush:
     cmd: "/app/contentacms/vendor/bin/drush --root=/app/contentacms/web"
   drupal:
