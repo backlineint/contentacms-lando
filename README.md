@@ -1,7 +1,8 @@
-# lando-drupal8-test-debugging
+# lando-contentacms-test-debugging
 
 ## Purpose
-The purpose of this lando "recipe" is to provide an easy setup for Drupal 8 core development, especially writing and debugging tests. This is geared towards PHPStorm, but should also work with other tools. 
+The purpose of this lando "recipe" is to provide an easy setup for ContentaCMS and to writing and debugging tests. 
+This is geared towards PHPStorm, but should also work with other tools. 
 
 ## Setup 
 
@@ -15,14 +16,14 @@ The purpose of this lando "recipe" is to provide an easy setup for Drupal 8 core
 You should now be able to run Drupal 8 core tests. From the command line it looks like this: 
 ```bash
 # unit test
-lando phpunit "/app/web/core/modules/toolbar/tests/src/Unit/PageCache/AllowToolbarPathTest.php"
+lando phpunit "/app/contentacms/web/core/modules/toolbar/tests/src/Unit/PageCache/AllowToolbarPathTest.php"
 # kernel test
-lando phpunit "/app/web/core/modules/field_ui/tests/src/Kernel/EntityDisplayTest.php"
+lando phpunit "/app/contentacms/web/core/modules/field_ui/tests/src/Kernel/EntityDisplayTest.php"
 # functional test
-lando phpunit "/app/web/core/modules/comment/tests/src/Functional/CommentAnonymousTest.php"
+lando phpunit "/app/contentacms/web/core/modules/comment/tests/src/Functional/CommentAnonymousTest.php"
 # functional javascript test
 sh run-selenium.sh
-lando phpunit "/app/web/core/tests/Drupal/FunctionalJavascriptTests/Tests/JSWebWithWebDriverAssertTest.php"
+lando phpunit "/app/contentacms/web/core/tests/Drupal/FunctionalJavascriptTests/Tests/JSWebWithWebDriverAssertTest.php"
 ```
 NB: You need to provide the path to the test file as seen in the container, not the host. 
 NNB: For Functional Javascript tests you need to start the selenium server before running the test. Selenium requires that you have java installed on your host.
