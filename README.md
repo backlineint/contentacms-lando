@@ -1,5 +1,4 @@
-# lando-contentacms-test-debugging
-
+# lando-contentacms
 ## Purpose
 The purpose of this lando "recipe" is to provide an easy setup for ContentaCMS and to writing and debugging tests. 
 This is geared towards PHPStorm, but should also work with other tools. 
